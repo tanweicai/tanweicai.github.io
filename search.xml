@@ -17,6 +17,106 @@
     
     
     <entry>
+      <title>android的Intent</title>
+      <link href="/2019/12/03/android%E7%9A%84Intent/"/>
+      <url>/2019/12/03/android%E7%9A%84Intent/</url>
+      
+        <content type="html"><![CDATA[<p></p><h4><strong>Intent大致分为两种：显式Intent和隐式<strong><strong>Intent</strong></strong></strong><span></span></h4><div>一、显式intent为从一个<p><span>activity </span>跳转到另一个 <span>activity 。如</span>：</div><pre><code>Intent intent = new Intent(MainActivity.this,SecondActivity.class);<br>startActivity(intent);</code></pre><p>二、<span>隐式Intent不明确指出我们想要启动哪一个活动，而是指定了一系列更为抽象的action和category等信息来过滤，找到符合条件的Activity</span></p><p><span> </span>1.setAction()：表明我们想要启动能够响应设置的这个action的活动，并在清单文件AndroidManifest.xml中设置action属性。</p><pre><code>Intent intent = new Intent();<br>intent.setAction(Intent.ACTION_DIAL);<br>startActivity(intent);</code></pre><p></p><p><span>2.setData()：通常是URI格式定义的操作数据。（只要设置setAction ()就要在清单文件AndroidManifest.xml中设置action属性）。</span> <br></p><pre><code>Intent intent = new Intent();<br>intent.setAction(Intent.ACTION_DIAL);<br>intent.setData(Uri.parse("tel:10086"));<br>startActivity(intent);</code></pre><p></p><p><span>3.setType()：指定数据类型，选出适合的应用来。（只要设置setAction ()就要在清单文件AndroidManifest.xml中设置action属性）</span>。</p><pre><code>Intent intent = new Intent();<br>intent.setAction(Intent.ACTION_SEND);<br>intent.setType("text/plain");<br>startActivity(intent);</code></pre><p></p><p><span>4.putExtra()：把要传递的数据暂存在Intent中，启动了另一个活动后，只需要把这些数据再从Intent中取出就可以了</span>。</p><pre><code>Intent intent = new Intent();<br>intent.putExtra("et1", "传递的值");<br>startActivity(intent);</code></pre><p><br></p><p></p></p><p><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> android </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>mybatis生成器</title>
+      <link href="/2019/12/03/mybatis%E7%94%9F%E6%88%90%E5%99%A8/"/>
+      <url>/2019/12/03/mybatis%E7%94%9F%E6%88%90%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<p>利用mybatis<span>生成器自动生成实体类、DAO接口和Mapping映射文件，这样可以大大节约开发时间。</span></p><p><span>这里我们以Maven项目，idea开发环境为例：</span></p><ol><li><span>首先在mavne中添加依赖<br></span><pre><code>&lt;!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core --&gt;<br>&lt;dependency&gt;<br>    &lt;groupId&gt;org.mybatis.generator&lt;/groupId&gt;<br>    &lt;artifactId&gt;mybatis-generator-core&lt;/artifactId&gt;<br>    &lt;version&gt;1.3.5&lt;/version&gt;<br>&lt;/dependency&gt;</code></pre></li><li>创建<p><span>generatorConfig.xml生成器的配置文件</span><pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;  <br>&lt;!DOCTYPE generatorConfiguration  <br>  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  <br>  "<a href="http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;" target="_blank" rel="noopener">http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd&quot;</a>&gt;  <br>&lt;generatorConfiguration&gt;  <br>    &lt;!-- 数据库驱动，这里的location是我们自己本地的mysql数据库的驱动jar包，路径根据情况而定--&gt;  <br>    &lt;classPathEntry  location="mysql-connector-java-5.1.25-bin.jar"/&gt;  <br>    &lt;context id="DB2Tables"  targetRuntime="MyBatis3"&gt;  <br>        &lt;commentGenerator&gt;  <br>            &lt;property name="suppressDate" value="true"/&gt;  <br>            &lt;!-- 是否去除自动生成的注释 true：是 ： false:否 --&gt;  <br>            &lt;property name="suppressAllComments" value="true"/&gt;  <br>        &lt;/commentGenerator&gt;  <br>        &lt;!--数据库链接URL，用户名、密码 --&gt;  <br>        &lt;jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/blog" userId="root" password="123456"&gt;  <br>        &lt;/jdbcConnection&gt;  <br>        &lt;javaTypeResolver&gt;  <br>            &lt;property name="forceBigDecimals" value="false"/&gt;  <br>        &lt;/javaTypeResolver&gt;  <br>        &lt;!-- 生成模型的包名和位置--&gt;  <br>        &lt;javaModelGenerator targetPackage="com.tan.model" targetProject="src"&gt;  <br>            &lt;property name="enableSubPackages" value="true"/&gt;  <br>            &lt;property name="trimStrings" value="true"/&gt;  <br>        &lt;/javaModelGenerator&gt;  <br>        &lt;!-- 生成映射文件的包名和位置--&gt;  <br>        &lt;sqlMapGenerator targetPackage="com.tan.mapping" targetProject="src"&gt;  <br>            &lt;property name="enableSubPackages" value="true"/&gt;  <br>        &lt;/sqlMapGenerator&gt;  <br>        &lt;!-- 生成DAO的包名和位置--&gt;  <br>        &lt;javaClientGenerator type="XMLMAPPER" targetPackage="com.tan.dao" targetProject="src"&gt;  <br>            &lt;property name="enableSubPackages" value="true"/&gt;  <br>        &lt;/javaClientGenerator&gt;  <br>        &lt;!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名--&gt;  <br>        &lt;table tableName="user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"&gt;&lt;/table&gt;<br>    &lt;/context&gt;  <br>&lt;/generatorConfiguration&gt;</code></pre></li><li>打开右上角的maven菜单栏，再打开Plugins菜单栏，双击此菜单栏下的mybatis-generator：generate脚本，即可马上生成我们所需要的的文件。<br></li></ol></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> mybatis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> mybatis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue常见问题汇总</title>
+      <link href="/2019/11/29/vue%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/"/>
+      <url>/2019/11/29/vue%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</url>
+      
+        <content type="html"><![CDATA[<pre><code>对数组的操作方法，简单点使用vue支持的变异方法（否则vue无法检测到数组变化，也就无法动态绑定）</code></pre><div><div><h2>变异方法</h2><p>Vue包含一组观察数组的变异方法，所以它们也将会触发视图更新。这些方法如下：</p><ul><li><code>push()</code></li><li><code>pop()</code></li><li><code>shift()</code></li><li><code>unshift()</code></li><li><code>splice()</code></li><li><code>sort()</code></li><li><code>reserve()</code></li></ul><div><br></div></div></div><p><br></p><p>记录问题1</p><p>某某之后代码不执行，极有可能之前做了return返回</p><p><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>axios相关知识介绍</title>
+      <link href="/2019/11/28/axios%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E4%BB%8B%E7%BB%8D/"/>
+      <url>/2019/11/28/axios%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E4%BB%8B%E7%BB%8D/</url>
+      
+        <content type="html"><![CDATA[<h3>1.axios是什么?</h3><p><span style="font-family: 微软雅黑;">Axios是一个基于Promise（ES6中用于处理异步的）的HTTP库，用于浏览器和node.js中，API。</span></p><h3><span style="font-family: 微软雅黑;">2.axios的特点</span></h3><div><div><span style="font-family: 微软雅黑;">1）从浏览器中创建 XMLHttpRequest<br>2）支持 Promise API<br>3）客户端支持防止CSRF<br>4）提供了一些并发请求的接口（重要，方便了很多的操作）<br>5）从 node.js 创建 http 请求<br>6）拦截请求和响应<br>7）转换请求和响应数据<br>8）取消请求<br>9）自动转换JSON数据</span></div></div><h3>3.axios的安装</h3><p><span style="font-family: 微软雅黑;">npm安装:npm i axios</span></p><p><span style="font-family: 微软雅黑;">bower安装:bower i axios</span></p><p><span style="font-family: 微软雅黑;">cdn安装：&lt;script src="https://unpkg.com/axios/dist/axios.min.js"&gt;&lt;/script&gt;</span></p><h3><span style="font-family: 微软雅黑;">4.<span style="color: rgb(51, 51, 51); font-size: 14px;">常用</span><span style="color: rgb(51, 51, 51); font-size: 14px;">api说明</span></span></h3><div><span style="font-family: 微软雅黑;"><span style="color: rgb(51, 51, 51); font-size: 14px;">执行一个GET请求</span></span></div><div><pre><code>const axios = require('axios');<br><br>// 向具有给定ID的用户发出请求<br>axios.get('/user?ID=12345')<br>  .then(function (response) {<br>    // 响应 success<br>    console.log(response);<br>  })<br>  .catch(function (error) {<br>    // 响应 error<br>    console.log(error);<br>  })<br>  .then(function () {<br>    // always executed<br>  });<br><br>// 上面的请求也可以通过下面params传递参数的方式实现<br>axios.get('/user', {<br>    params: {<br>      ID: 12345<br>    }<br>  })<br>  .then(function (response) {<br>    console.log(response);<br>  })<br>  .catch(function (error) {<br>    console.log(error);<br>  })<br>  .then(function () {<br>    // always executed<br>  });</code></pre><p><span style="font-family: 微软雅黑;">执行一个post请求</span></p><pre><code>axios.post('/user', {<br>    firstName: 'Fred',<br>    lastName: 'Flintstone'<br>  })<br>  .then(function (response) {<br>    console.log(response);<br>  })<br>  .catch(function (error) {<br>    console.log(error);<br>  });</code></pre><p><span style="font-family: 微软雅黑;">执行多个并发请求</span></p><pre><code>function getUserAccount() {<br>  return axios.get('/user/12345');   //请求1<br>}<br><br>function getUserPermissions() {<br>  return axios.get('/user/12345/permissions');   //请求2<br>}<br><br>axios.all([getUserAccount(), getUserPermissions()])   //两个请求放到数组中传递给all()<br>  .then(axios.spread(function (acct, perms) {   //多个请求都发送完毕，拿到返回的数据<br>    // 两个请求现在都执行完成<br>  }));</code></pre><p><span style="font-family: 微软雅黑;">axios中的<code>all()</code>方法，传入一个数组，数组元素即为函数调用，函数中即为请求调用。<br>然后，<code>then()</code>回调方法中调用axios自己的<code>spread()</code>方法。&nbsp;&nbsp;<br></span></p><p><br></p><p><span style="font-family: 微软雅黑;">通用请求<code>axios(config)</code>，通过向 axios 传递相关配置config对象来创建请求&nbsp;</span>&nbsp;</p></div><pre><code> <span style="color: inherit; font-size: inherit;">axios({</span>  methods: 'post',<br>  url: 'http://jsonplaceholder.typicode.com/users',<br>  data: {<br>  name: 'qiurx'<br>  })<br>  .then(function (response) {<br>    console.log(response);<br>  })<br>  .catch(function (error) {<br>    console.log(error);<br>  })</code></pre><h3>5.创建实例</h3><p><span style="font-family: 微软雅黑;">可以使用自定义配置新建一个 axios 实例<code>axios.create([config])</code>&nbsp;&nbsp;</span><br></p><div><pre><code>//create创建一个新的实例对象var instance = axios.create({   url: 'http://jsonplaceholder.typicode.com/users',   imeout: 3000,   method: 'post'});//即可调用方法，和axios实例同instance.get('http://jsonplaceholder.typicode.com/users').then(Response=&gt;{   console.log(Response);});</code></pre></div><h3>&nbsp;6.拦截器</h3><p><span style="font-family: 微软雅黑;">在请求或响应被 then 或 catch 处理前拦截它们。&nbsp;</span>&nbsp;<br></p><pre><code>// 添加请求拦截器<br>axios.interceptors.request.use(function (config) {<br>    // Do something before request is sent<br>    return config;<br>  }, function (error) {<br>    // Do something with request error<br>    return Promise.reject(error);<br>  });<br><br>// 添加响应拦截器<br>axios.interceptors.response.use(function (response) {<br>    // Do something with response data<br>    return response;<br>  }, function (error) {<br>    // Do something with response error<br>    return Promise.reject(error);<br>  });</code></pre><p><span style="font-family: 微软雅黑;">也可以将拦截器添加到axios的自定义实例。&nbsp;</span></p><pre><code>const instance = axios.create();<br>instance.interceptors.request.use(function () {/*...*/});</code></pre><p><br></p><p>&nbsp;<br></p><p><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue路由跳转及传参方式</title>
       <link href="/2019/11/28/vue%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%8F%8A%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/"/>
       <url>/2019/11/28/vue%E8%B7%AF%E7%94%B1%E8%B7%B3%E8%BD%AC%E5%8F%8A%E4%BC%A0%E5%8F%82%E6%96%B9%E5%BC%8F/</url>
