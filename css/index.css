@@ -4066,7 +4066,7 @@ img {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 50;
   pointer-events: none;
 }
 .medium-zoom-image--opened {
