@@ -17,6 +17,31 @@
     
     
     <entry>
+      <title>VUE+Springboot+Element-ui 搭建基础项目</title>
+      <link href="/2020/04/24/17-VUE+Springboot+Element-ui%20%E6%90%AD%E5%BB%BA%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2020/04/24/17-VUE+Springboot+Element-ui%20%E6%90%AD%E5%BB%BA%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<p>刚刚接触前后端分离的童鞋，如果不是很大的项目的话，优先选择vue+springboot+element-ui,以下简单介绍搭建的过程</p><p>1.前端vue</p><p>需安装node.js，下载npm淘宝镜像，npm其实就是包管理工具，里面存有很多需要的依赖包，我们用的时候直接import导入，不用逐一引入，开发比较简洁</p><p>准备工作做完之后，需创建项目，我一般使用cmd创建一个项目，具体命令可百度。。</p><p><img src= "/img/loading.gif" data-src="http://img.tanweicai.top/images/images/17-1.jpg" style="max-width:100%;"><br></p><p>创建完成的项目大体目录如图，</p><p>vue其实是单页面，也就是只有一个html，其他的组件都是嵌入到html中，所以路由非常重要，贴出我的路由配置</p><p><img src= "/img/loading.gif" data-src="http://img.tanweicai.top/images/images/17-2.jpg" style="max-width:100%;"><br></p><p>所需要的页面都要写到路由里面，首先要引入vue-router插件，注意：必须要写成routes，不能是其他的名字！！！</p><p>然后在main.js中使用路由就ok了，现在说一下element-ui的集成</p><p>（1）推荐使用npm的方式，npm i element-ui -S</p><p>&nbsp; (2) 然后在main.js中导入，可以按需导入，也可以全部导入，import ElementUI from 'element-ui';<br></p><p>（3）接下来，全局配置，Vue.use(Element, { size: 'small', zIndex: 3000 });</p><p>以上完成就可以使用Element--ui写页面了</p><p>2.Springboot部分</p><p>只需接收请求的路径即可，可使用vue-resource插件与后台交互，也可选axios,以下是axios</p><p><img src= "/img/loading.gif" data-src="http://img.tanweicai.top/images/images/17-3.jpg" style="max-width:100%;"><br></p><p>对应的boot部分如下图</p><p><img src= "/img/loading.gif" data-src="http://img.tanweicai.top/images/images/17-4.jpg" style="max-width:100%;"><br></p><p>至此，一个简单的搭建过程已经完成了，啦啦啦</p><p><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>IDEA创建web项目并部署tomcat</title>
       <link href="/2019/12/25/16-IDEA%E5%88%9B%E5%BB%BAweb%E9%A1%B9%E7%9B%AE%E5%B9%B6%E9%83%A8%E7%BD%B2tomcat/"/>
       <url>/2019/12/25/16-IDEA%E5%88%9B%E5%BB%BAweb%E9%A1%B9%E7%9B%AE%E5%B9%B6%E9%83%A8%E7%BD%B2tomcat/</url>
