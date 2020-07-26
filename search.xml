@@ -17,6 +17,56 @@
     
     
     <entry>
+      <title>IDEA创建web项目并部署tomcat</title>
+      <link href="/2019/12/25/16-IDEA%E5%88%9B%E5%BB%BAweb%E9%A1%B9%E7%9B%AE%E5%B9%B6%E9%83%A8%E7%BD%B2tomcat/"/>
+      <url>/2019/12/25/16-IDEA%E5%88%9B%E5%BB%BAweb%E9%A1%B9%E7%9B%AE%E5%B9%B6%E9%83%A8%E7%BD%B2tomcat/</url>
+      
+        <content type="html"><![CDATA[<h4>1.创建一个web工程</h4><div>1.1 新建工程&nbsp; 点击Create New Project <br></div><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728213335290?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="679" height="494"></p><p>1.2 选择Maven-》选择java jdk-》勾选Create from archetype-》选择maven-archetype-webapp,如下图所示 <br></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728213906874?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="735" height="724"></p><p>1.3 填写GroupId（域名.公司名.项目名）、Artifacted(模块名) <br></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728215647799?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="714" height="156"></p><p>1.4 选择本地maven解压的路径、配置文件 <br></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728215152467?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="729" height="317"></p><p>1.5 选择工作空间 <br></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728215925387?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="719" height="182"> <br></p><p>1.6 创建成功，目录结构如下 <br></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728220801820?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="321" height="372"></p><p>1.7 在main底下new两个Directory:java,resources <br></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728230022329?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="747" height="127"> <br></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728230547299?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="304" height="271"></p><p>1.8 点Project Struct，设置源码文件夹和资源文件夹 <br></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728230920455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="1025" height="342"></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728231113754?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="1031" height="359"></p><h4>2tomcat部署</h4><div>Add Configuration -》 + -》（33items more...）Tomcat Server -》local-》设置Server、Deployment-》&nbsp;Apply-》ok <br></div><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728232815611?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="518" height="320"></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728232623889?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="593" height="87"></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180728233729650?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="863" height="660"></p><p>把web项目加到tomcat下<br></p><p><img alt="" src= "/img/loading.gif" data-src="https://img-blog.csdn.net/2018072823384991?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2RheGlhXzIwMTY=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" width="750" height="326"></p><p>最后启动tomcat就Ok了</p><p><br></p><p><br></p><p><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> idea </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> idea </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>oracle配置环境变量</title>
+      <link href="/2019/12/12/15-oracle%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/"/>
+      <url>/2019/12/12/15-oracle%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
+      
+        <content type="html"><![CDATA[<h3>1.ORACLE_HOME：数据库的实例启动所需要的所有的程序和相关的文件（除了数据库外）</h3><p>变量名:ORACLE_HOME</p><p>变量值:D:\oracle_setup\product\11.2.0\dbhome_2</p><h3>2.NLS_LANG：配置客户端的字符集</h3><div>变量名:NLS_LANG <br></div><div>变量值:SIMPLIFIED CHINESE_CHINA.ZHS16GBK <br></div><div><h3>2.TNS_ADMIN：监听数据库tns</h3><div>变量名 :TNS_ADMIN <br></div><div>变量值:D:\oracle_setup\product\11.2.0\dbhome_2\NETWORK\ADMIN</div></div><p><br></p><p><br></p><p><br></p><p><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> oracle </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> oracle </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>oracle远程无法连接(本机访问正常)</title>
       <link href="/2019/12/12/14-oracle%E8%BF%9C%E7%A8%8B%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5(%E6%9C%AC%E6%9C%BA%E8%AE%BF%E9%97%AE%E6%AD%A3%E5%B8%B8)/"/>
       <url>/2019/12/12/14-oracle%E8%BF%9C%E7%A8%8B%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5(%E6%9C%AC%E6%9C%BA%E8%AE%BF%E9%97%AE%E6%AD%A3%E5%B8%B8)/</url>
