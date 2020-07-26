@@ -17,6 +17,106 @@
     
     
     <entry>
+      <title>SecureCRT中文乱码解决</title>
+      <link href="/2020/05/14/21-SecureCRT%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3/"/>
+      <url>/2020/05/14/21-SecureCRT%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81%E8%A7%A3%E5%86%B3/</url>
+      
+        <content type="html"><![CDATA[<p>一.中文乱码问题&nbsp;</p><p>1.打开选项面板</p><p><img src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180803182354908?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lvbmdxaV93YW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">&nbsp;<br></p><p>2.选择中文格式&nbsp;</p><p>&nbsp;<img src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180803182521840?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lvbmdxaV93YW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br></p><p>3.选择字体/字形/字体大小/中文字符集&nbsp; &nbsp;然后点确定&nbsp;</p><p>&nbsp;<img src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180803182612367?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lvbmdxaV93YW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br></p><p>4.选择编解码为UTF-8&nbsp; 然后点OK&nbsp;</p><p>&nbsp;<img src= "/img/loading.gif" data-src="https://img-blog.csdn.net/20180803182719885?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3lvbmdxaV93YW5n/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70"><br></p><p>此时虽然可以显示中文，但是在SecureFX中新建的中文文件夹在SecureCRT中仍然会显示乱码&nbsp;</p>需要通过修改配置文件进行配置，下面将进行具体说明。<br>配置文件进行设置<br><p>1. 找到SecureFX配置文件夹（选项--全局选项，常规下的配置文件夹）</p><p>2.在配置文件的session目录里找到Default.ini文件</p><p>3.查找Filenames Always Use UTF8，将=号后面的参数改成00000001，保存退出即可。&nbsp;</p><p>此时，中文问题已经完美解决啦~</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> SecureCRT </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SecureCRT </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos安装docker常见问题记录</title>
+      <link href="/2020/05/06/20-centos%E5%AE%89%E8%A3%85docker%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+      <url>/2020/05/06/20-centos%E5%AE%89%E8%A3%85docker%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<p>此文章为安装过程启动时候的常见问题记录，安装过程省略...</p><p>1、使用<p><span>systemctl </span><span>start</span><span> docker</span>命令启动报错</p><pre><code>[root@localhost ~]# systemctl start docker<br>Job for docker.service failed because the control process exited with error code. See "systemctl status docker.service" and "journalctl -xe" for details.</code></pre><p>2、上述报错不详细，通过命令</p><p><span>systemctl status docker.service</span>查看详细报错</p><pre><code>[root@iZ23lj7d0igZ etc]# systemctl status docker.service<br>● docker.service - Docker Application Container Engine<br>&nbsp; &nbsp;Loaded: loaded (/usr/lib/systemd/system/docker.service; disabled; vendor preset: disabled)<br>&nbsp; &nbsp;Active: failed (Result: start-limit) since Thu 2019-01-24 14:12:25 CST; 3s ago<br>&nbsp; &nbsp; &nbsp;Docs: <a href="https://docs.docker.com" target="_blank" rel="noopener">https://docs.docker.com</a><br>&nbsp; Process: 19664 ExecStart=/usr/bin/dockerd -H fd:// (code=exited, status=1/FAILURE)<br>&nbsp;Main PID: 19664 (code=exited, status=1/FAILURE)<br> <br>Jan 24 14:12:23 iZ23lj7d0igZ systemd[1]: Failed to start Docker Application Container Engine.<br>Jan 24 14:12:23 iZ23lj7d0igZ systemd[1]: Unit docker.service entered failed state.<br>Jan 24 14:12:23 iZ23lj7d0igZ systemd[1]: docker.service failed.<br>Jan 24 14:12:25 iZ23lj7d0igZ systemd[1]: docker.service holdoff time over, scheduling restart.<br>Jan 24 14:12:25 iZ23lj7d0igZ systemd[1]: Stopped Docker Application Container Engine.<br>Jan 24 14:12:25 iZ23lj7d0igZ systemd[1]: start request repeated too quickly for docker.service<br>Jan 24 14:12:25 iZ23lj7d0igZ systemd[1]: Failed to start Docker Application Container Engine.<br>Jan 24 14:12:25 iZ23lj7d0igZ systemd[1]: Unit docker.service entered failed state.<br>Jan 24 14:12:25 iZ23lj7d0igZ systemd[1]: docker.service failed.</code></pre><p>3、此处报错也不是特别详细直观，这时可以通过dockerd命令查看更详细的报错信息</p><pre><code>INFO[0000] serving...                                    address="/var/run/docker/containerd/docker-containerd-debug.sock" module="containerd/debug"<br>INFO[0000] serving...                                    address="/var/run/docker/containerd/docker-containerd.sock" module="containerd/grpc"<br>INFO[0000] containerd successfully booted in 0.034483s   module=containerd<br>ERRO[2020-05-06T21:50:49.850733133+08:00] 'overlay' not found as a supported filesystem on this host. Please ensure kernel is new enough and has overlay support loaded. <br>Error starting daemon: error initializing graphdriver: driver not supported</code></pre><p>从这里报错，可以看出</p><p><span>daemon.json</span>配置文件有问题，或者不对，修改</p><p><span>或者创建daemon.json</span>配置文件</p><pre><code>vim /etc/docker/daemon.json</code></pre><p>加入或者修改以下内容<br></p><pre><code>{"storage-driver": "devicemapper"}</code></pre><p>这里，为了保险，可以重启一下系统，但是启动后依然报错，如下</p><pre><code>INFO[0000] serving...                                    address="/var/run/docker/containerd/docker-containerd-debug.sock" module="containerd/debug"<br>INFO[0000] serving...                                    address="/var/run/docker/containerd/docker-containerd.sock" module="containerd/grpc"<br>INFO[0000] containerd successfully booted in 0.002203s   module=containerd<br>WARN[2020-05-06T21:52:43.856486611+08:00] devmapper: Usage of loopback devices is strongly discouraged for production use. Please use <code>--storage-opt dm.thinpooldev</code> or use <code>man dockerd</code> to refer to dm.thinpooldev section. <br>INFO[2020-05-06T21:52:44.055948637+08:00] devmapper: Creating filesystem xfs on device docker-253:1-68711890-base, mkfs args: [-m crc=0,finobt=0 /dev/mapper/docker-253:1-68711890-base] <br>INFO[2020-05-06T21:52:44.056616713+08:00] devmapper: Error while creating filesystem xfs on device docker-253:1-68711890-base: exit status 1 <br>Error starting daemon: error initializing graphdriver: exit status 1</code></pre><p>这里报错是因为<span>系统 xfsprogs 版本过低造成的，更新一下即可</span></p><pre><code>yum install xfsprogs</code></pre><p>再次启动，我遇到的问题就已经解决了。<br></p><p><span></span></p></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> docker </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>上传代码到码云（github同）</title>
+      <link href="/2020/04/27/19-%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E5%88%B0%E7%A0%81%E4%BA%91%EF%BC%88github%E5%90%8C%EF%BC%89/"/>
+      <url>/2020/04/27/19-%E4%B8%8A%E4%BC%A0%E4%BB%A3%E7%A0%81%E5%88%B0%E7%A0%81%E4%BA%91%EF%BC%88github%E5%90%8C%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<p>1、安装git客户端，安装过程简单，省略。</p><p>2、git配置</p><pre><code>git config --global user.name "用户名"<br>git config --global user.email "邮箱"</code></pre><p>2、生成公钥私钥</p><pre><code>ssh-keygen -t rsa -C "邮箱"</code></pre><p>然后会有几个确认提示，一直回车即可，完成后，在.ssh/id_rsa.pub里面就会有生成的公钥</p><p>3、在码云上建立git仓库，在项目文件夹下执行git命令</p><pre><code>git init</code></pre><p>4、将项目添加到仓库中</p><pre><code>git add .</code></pre><p>5、将添加的项目提交到仓库</p><pre><code>git commit -m '备注'</code></pre><p>6、将本地仓库关联到码云上</p><pre><code>git remote add origin "自己的仓库地址"</code></pre><p>7、上传码云前要先pull下</p><pre><code>git pull origin  master</code></pre><p>8、最后一步，上传代码到码云仓库</p><pre><code>git push -u origin master</code></pre><p>如果这一步报错，则回到上一步，重新执行命令，会下载README.md文件到本地，然后就可以正常上传了</p><pre><code>git pull --rebase origin master</code></pre><p><br></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> github </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>GRPC案例教程</title>
+      <link href="/2020/04/26/18-GRPC%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/"/>
+      <url>/2020/04/26/18-GRPC%E6%A1%88%E4%BE%8B%E6%95%99%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<p>这里案例采用grpc和springboot结合使用的方式，其他框架类似</p><p>项目结构分为三部分：grpc、client、server</p><p>1、grpc端，这里主要是生成代码</p><p>首先，加入maven依赖</p><pre><code>&lt;dependency&gt;<br>      &lt;groupId&gt;io.grpc&lt;/groupId&gt;<br>      &lt;artifactId&gt;grpc-all&lt;/artifactId&gt;<br>       &lt;version&gt;1.12.0&lt;/version&gt;<br> &lt;/dependency&gt;</code></pre><p>然后，引入build</p><pre><code>&lt;build&gt;<br>        &lt;extensions&gt;<br>            &lt;extension&gt;<br>                &lt;groupId&gt;kr.motd.maven&lt;/groupId&gt;<br>                &lt;artifactId&gt;os-maven-plugin&lt;/artifactId&gt;<br>                &lt;version&gt;1.4.1.Final&lt;/version&gt;<br>            &lt;/extension&gt;<br>        &lt;/extensions&gt;<br>        &lt;plugins&gt;<br>            &lt;plugin&gt;<br>                &lt;groupId&gt;org.xolstice.maven.plugins&lt;/groupId&gt;<br>                &lt;artifactId&gt;protobuf-maven-plugin&lt;/artifactId&gt;<br>                &lt;version&gt;0.5.0&lt;/version&gt;<br>                &lt;configuration&gt;<br>                    &lt;pluginId&gt;grpc-java&lt;/pluginId&gt;<br>                    &lt;protocArtifact&gt;com.google.protobuf:protoc:3.0.2:exe:${os.detected.classifier}&lt;/protocArtifact&gt;<br>                    &lt;pluginArtifact&gt;io.grpc:protoc-gen-grpc-java:1.2.0:exe:${os.detected.classifier}&lt;/pluginArtifact&gt;<br>                &lt;/configuration&gt;<br>                &lt;executions&gt;<br>                    &lt;execution&gt;<br>                        &lt;goals&gt;<br>                            &lt;goal&gt;compile&lt;/goal&gt;<br>                            &lt;goal&gt;compile-custom&lt;/goal&gt;<br>                        &lt;/goals&gt;<br>                    &lt;/execution&gt;<br>                &lt;/executions&gt;<br>            &lt;/plugin&gt;<br>        &lt;/plugins&gt;<br>    &lt;/build&gt;</code></pre><p>然后，创建.proto文件，这里采用proto3语法</p><pre><code>syntax = "proto3";   // 语法版本<br><br>// stub选项<br>option java_package = "com.shgx.grpc.api";<br>option java_outer_classname = "RPCDateServiceApi";<br>option java_multiple_files = true;<br><br>// 定义包名<br>package com.shgx.grpc.api;<br><br>// 服务接口定义，服务端和客户端都要遵守该接口进行通信<br>service RPCDateService {<br>    rpc getDate (RPCDateRequest) returns (RPCDateResponse) {}<br>}<br><br>// 定义消息（请求）<br>message RPCDateRequest {<br>    string userName = 1;<br>}<br><br>// 定义消息（响应）<br>message RPCDateResponse {<br>    string serverDate = 1;<br>}</code></pre><p>最后，执行mvn complie命令，idea的快捷方式如下</p><p><img src= "/img/loading.gif" data-src="http://img.tanweicai.top/images/images/18-1.jpg" style="max-width:100%;"><br></p><p>至此，grpc端的代码已经生成完毕，效果省。</p><p>2、server端</p><p>首先，添加maven依赖</p><pre><code>&lt;dependency&gt;<br>      &lt;groupId&gt;com.tan.rpc&lt;/groupId&gt;<br>      &lt;artifactId&gt;grpc&lt;/artifactId&gt;<br>      &lt;version&gt;1.0-SNAPSHOT&lt;/version&gt;<br>      &lt;scope&gt;compile&lt;/scope&gt;<br>&lt;/dependency&gt;</code></pre><p>然后，创建RPCDateServiceImpl，这是供调用的模块</p><pre><code>public class RPCDateServiceImpl extends RPCDateServiceGrpc.RPCDateServiceImplBase{<br>    @Override<br>    public void getDate(RPCDateRequest request, StreamObserver&lt;RPCDateResponse&gt; responseObserver) {<br>        RPCDateResponse rpcDateResponse = null;<br>        Date now=new Date();<br>        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("今天是"+"yyyy年MM月dd日 E kk点mm分");<br>        String nowTime = simpleDateFormat.format( now );<br>        try {<br>            rpcDateResponse = RPCDateResponse<br>                    .newBuilder()<br>                    .setServerDate( "Welcome " + request.getUserName()  + ", " + nowTime )<br>                    .build();<br>        } catch (Exception e) {<br>            responseObserver.onError(e);<br>        } finally {<br>            responseObserver.onNext( rpcDateResponse );<br>        }<br>        responseObserver.onCompleted();<br>    }<br>}</code></pre><p>最后，创建server的启动方法</p><pre><code>public class GRPCServer {<br>   private static final int port = 9999;<br>   public static void main( String[] args ) throws Exception {<br>       Server server = ServerBuilder.<br>               forPort(port)<br>               .addService( new RPCDateServiceImpl() )<br>               .build().start();<br>       System.out.println( "grpc服务端启动成功, 端口=" + port );<br>       server.awaitTermination();<br>   }<br>}</code></pre><p>3、client端</p><p>首先，引入maven依赖，这里的依赖同server端，省略。</p><p>然后，创建连接的client端</p><pre><code>public class GRPCClient {<br>    private static final String host = "127.0.0.1";<br>    private static final int serverPort = 9999;<br><br>    public static void main( String[] args ) throws Exception {<br>        ManagedChannel managedChannel = ManagedChannelBuilder.forAddress( host, serverPort ).usePlaintext().build();<br>        try {<br>            RPCDateServiceGrpc.RPCDateServiceBlockingStub rpcDateService = RPCDateServiceGrpc.newBlockingStub( managedChannel );<br>            RPCDateRequest rpcDateRequest = RPCDateRequest<br>                    .newBuilder()<br>                    .setUserName("shgx")<br>                    .build();<br>            RPCDateResponse rpcDateResponse = rpcDateService.getDate( rpcDateRequest );<br>            System.out.println( rpcDateResponse.getServerDate() );<br>        } finally {<br>            managedChannel.shutdown();<br>        }<br>    }<br>}</code></pre><p><br></p><p>最后，先开启server的启动方法，然后开启client的连接方法，就会发现client调用了server端的RPCDateServiceImpl模块，并且打印，至此，案例结束。</p><p>项目源码已上传到码云，见https://gitee.com/tanweicai/grpc</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> GRPC </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GRPC </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VUE+Springboot+Element-ui 搭建基础项目</title>
       <link href="/2020/04/24/17-VUE+Springboot+Element-ui%20%E6%90%AD%E5%BB%BA%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE/"/>
       <url>/2020/04/24/17-VUE+Springboot+Element-ui%20%E6%90%AD%E5%BB%BA%E5%9F%BA%E7%A1%80%E9%A1%B9%E7%9B%AE/</url>
